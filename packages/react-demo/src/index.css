@@ -1,0 +1,14 @@
+.imageClass{
+    border: 3px solid;
+}
+
+#root{
+    height: 766px;
+    width: 1008px;
+    margin: 0 auto;
+}
+.imgItem{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
