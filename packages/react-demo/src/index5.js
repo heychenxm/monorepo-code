@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Comp from './views/Comp';
+import BallList from './views/BallList';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <>
-    <Comp />
+        <BallList />
     </>
 )
