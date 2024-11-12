@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce</title>
+</head>
+<body>
+    <button onclick="debounceLog()">debounce</button>
+    <script type="text/javascript">
+        let count = 0;
+        function log() {
+            console.log("count:", count+=1)
+        }
+
+        function debounce(fn, wait) {
+            let timer = null
+            timer = setTimeout(() => {
+                fn.apply(this, ...arguments)
+                clearTimeout(timer)
+            }, wait);
+            return timer
+            
+        }
+
+        const debounceLog = debounce(log, 2000)
+
+    </script>
+</body>
+</html>

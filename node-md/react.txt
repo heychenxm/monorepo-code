@@ -1,0 +1,7 @@
+生命周期
+react < 16.0.0
+constructor
+render
+compoentWillMounted
+
+react > 16.0.0
