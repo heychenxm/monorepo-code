@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function test(a,b,c,d) {
+            console.log(a*b+c-d)
+        }
+
+        // function curry(fn, ...args) {
+        //     return function(...subArgs){
+        //         const arr = [...args, ...subArgs]
+        //         return fn(...arr)
+        //     }
+        // }
+        
+        // 柯里化：用于固定某个函数的前面的参数，得到一个新的函数，新的函数调用是，接受剩余的参数
+        function curry(func, ...args){
+            return function(...subArgs) {
+                const allArgs = [...args, ...subArgs];
+                if(allArgs.length >= func.length){
+                    // 参数够了
+                    return func(...allArgs)
+                }else{
+                    // 参数不够，继续固定
+                    return curry(func, ...allArgs)
+                }
+            }
+        }
+
+        const newFn = curry(test, 1,2)
+        console.log(newFn)
+        newFn(1,2)
+        newFn(4,2)
+        newFn(6,2)
+        newFn(1,4)
+        newFn(4,4)
+    </script>
+</body>
+</html>

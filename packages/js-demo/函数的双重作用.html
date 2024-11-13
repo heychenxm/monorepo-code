@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name, age){
+            if(new.target !== Person){
+                throw new Error("不是使用new调用函数")
+            }
+            this.name = name;
+            this.age = age;
+            this.obj = {
+                name: this.name,
+                age: this.age
+            }
+        }
+        const p1 = new Person('陈', 10)
+        console.log(p1) // Person
+
+        const p2 = Person('陈', 10)
+        console.log(p2) // 报错
+    </script>
+</body>
+</html>

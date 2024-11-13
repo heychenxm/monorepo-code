@@ -45,3 +45,63 @@ includes
 startsWith
 endWith
 repeat
+
+正则表达式
+    粘连标记 y
+    匹配时，完全按照正则对象中的lastIndex位置开始匹配，并且匹配的位置必须在lastIndex位置
+
+模板字符串`${表达式}`
+1.多行字符串
+2.拼接字符串   
+3.模板字符串的标记
+    标记名`模板字符串`
+    1.参数1：被插值分割的字符串数组
+    2.后续参数：所有的插值
+    String.raw
+    eg:
+        对用户输入进行控制
+        function safe(parts){
+            const values = Array.prototype.slice.apply(this).slice(1)
+            for let i= 0; i < values. length; i++) {
+                const= values [i]. replace(/</g, "&It;").replace(/>/g, "&gt;");
+                str+=parts [i] + v;
+            if (i=== values.length-1） ｛
+                str+= parts[i + 1];
+            }
+            return str;
+        } 
+
+
+参数默认值
+    在书写形参时，直接给形参赋值，附的值即为默认值
+    这样一来，当调用函数时，如果没有给对应的参数赋值，给他它的值是undefined，则会自动使用默认值
+    对arguments的影响
+        只要给函数加上参数默认值，该函数会自动变成严格模式下的规则：arguments和形参脱离
+    暂时性死区
+        形参和es6中的let和const声明一样，具有作用域，并且更具参数的声明顺序，存在暂时性死区
+
+剩余参数（平时写公共函数可以使用）
+    arguments的缺陷
+        1.如果和形参配合使用，容易导致混乱
+        2.从语义上，使用arguments获取参数，用于形参缺失，无法从函数定义上理解函数真实意图
+
+        es6的剩余参数专门用于收集末尾的参数，把它放到一个数组中
+        1.一个函数，仅能出现一个剩余参数
+        2.一个函数，如果有剩余参数，剩余参数必须是最后一个参数
+
+展开运算符（可以进行数组和对象的浅拷贝）
+    对数组展开es6
+    对对象展开es7
+柯里化
+    用于固定某特函数的前面的参数，得到一个新的函数
+
+明确函数的双重用途
+    es6提供了一个特殊的api，可以使用该api在函数内部，判断该函数是否使用了new来调用
+    new.target
+        该表达式，得到的是：如果没有使用new来调用函数，则返回undefined
+        如果使用new调用函数，则得到的是new关键字后面的函数本身
+
+
+
+浅拷贝
+深拷贝
