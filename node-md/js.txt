@@ -101,6 +101,65 @@ repeat
         该表达式，得到的是：如果没有使用new来调用函数，则返回undefined
         如果使用new调用函数，则得到的是new关键字后面的函数本身
 
+this指向
+1.通过对象调用函数,this指向对象
+2.直接调用函数，this指向全局对象
+3.如果通过new调用函数，this指向新创建的对象
+4.如果通过apply,call,bind调用函数，this指向指定的数据
+5.如果是DOM事件函数，this指向事件源
+
+箭头函数是一个函数表达式，理论上，任何使用函数表达式的场景都可以使用箭头函数
+(参数1， 参数2)=>{//函数体}
+箭头函数的函数体中的this，取决于箭头函数定义的位置的this指向，而与如何调用无关
+箭头函数中，不存在this, arguments,new target,如果使用了，则使用的是函数外层的对应的this、argument、new.target
+箭头函数没有原型
+箭头函数不能作用构造函数使用
+
+应用场景
+1.临时使用的函数，并不会刻意调用它
+    事件处理函数
+    异步处理函数 setTimeout ,setInterval
+    其它临时性的函数
+2.为了绑定外层this的函数
+3.在不影响其他代码的情况下，保持代码的简洁
+
+对象字面量语法 
+1.成员速写
+    同名形参可以省略不写
+2.方法速写
+    const user = {
+        name: 'xxx',
+        age: xx,
+        say: function(){}
+    }
+    可以这么写
+    const user = {
+        name: 'xxx',
+        age: xx,
+        say(){} // 与上面等效 
+    }
+3.计算属性名
+    有的时候，初始化对象时，某些属性名可能来自于某个表达式的值，在es6中，可以使用中括号[]来表示该属性名是通过计算得到的
+
+Object的新增API
+    Objec.is
+    用于判断两个数据是否相等，基本上跟严格相等是一致的，除了一下两点
+    1.NaN和NaN相等
+    2.+0和-0不相等
+
+    Object.assign
+    用户对象混合, 返回第一个对象
+    Object.assign({}, obj1, obj2)
+
+    Object.getOwnPropertyNames的枚举顺序
+    先排数字，并按照升序排序，再排其它，按照书写顺序排序
+
+    Object.setPrototypeOf
+    该函数用于设置某个对象的隐式原型
+    比如：Object.setPrototypeOf(obj1, obj2)
+    相当于： obj1.__proto__ = obj2    
+
+
 
 
 浅拷贝
