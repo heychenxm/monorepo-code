@@ -46,6 +46,128 @@ startsWith
 endWith
 repeat
 
+这两个循环的区别
+for in
+for of
+正则表达式
+    粘连标记 y
+    匹配时，完全按照正则对象中的lastIndex位置开始匹配，并且匹配的位置必须在lastIndex位置
+
+模板字符串`${表达式}`
+1.多行字符串
+2.拼接字符串   
+3.模板字符串的标记
+    标记名`模板字符串`
+    1.参数1：被插值分割的字符串数组
+    2.后续参数：所有的插值
+    String.raw
+    eg:
+        对用户输入进行控制
+        function safe(parts){
+            const values = Array.prototype.slice.apply(this).slice(1)
+            for let i= 0; i < values. length; i++) {
+                const= values [i]. replace(/</g, "&It;").replace(/>/g, "&gt;");
+                str+=parts [i] + v;
+            if (i=== values.length-1） ｛
+                str+= parts[i + 1];
+            }
+            return str;
+        } 
+
+
+参数默认值
+    在书写形参时，直接给形参赋值，附的值即为默认值
+    这样一来，当调用函数时，如果没有给对应的参数赋值，给他它的值是undefined，则会自动使用默认值
+    对arguments的影响
+        只要给函数加上参数默认值，该函数会自动变成严格模式下的规则：arguments和形参脱离
+    暂时性死区
+        形参和es6中的let和const声明一样，具有作用域，并且更具参数的声明顺序，存在暂时性死区
+
+剩余参数（平时写公共函数可以使用）
+    arguments的缺陷
+        1.如果和形参配合使用，容易导致混乱
+        2.从语义上，使用arguments获取参数，用于形参缺失，无法从函数定义上理解函数真实意图
+
+        es6的剩余参数专门用于收集末尾的参数，把它放到一个数组中
+        1.一个函数，仅能出现一个剩余参数
+        2.一个函数，如果有剩余参数，剩余参数必须是最后一个参数
+
+展开运算符（可以进行数组和对象的浅拷贝）
+    对数组展开es6
+    对对象展开es7
+柯里化
+    用于固定某特函数的前面的参数，得到一个新的函数
+
+明确函数的双重用途
+    es6提供了一个特殊的api，可以使用该api在函数内部，判断该函数是否使用了new来调用
+    new.target
+        该表达式，得到的是：如果没有使用new来调用函数，则返回undefined
+        如果使用new调用函数，则得到的是new关键字后面的函数本身
+
+this指向
+1.通过对象调用函数,this指向对象
+2.直接调用函数，this指向全局对象
+3.如果通过new调用函数，this指向新创建的对象
+4.如果通过apply,call,bind调用函数，this指向指定的数据
+5.如果是DOM事件函数，this指向事件源
+
+箭头函数是一个函数表达式，理论上，任何使用函数表达式的场景都可以使用箭头函数
+(参数1， 参数2)=>{//函数体}
+箭头函数的函数体中的this，取决于箭头函数定义的位置的this指向，而与如何调用无关
+箭头函数中，不存在this, arguments,new target,如果使用了，则使用的是函数外层的对应的this、argument、new.target
+箭头函数没有原型
+箭头函数不能作用构造函数使用
+
+应用场景
+1.临时使用的函数，并不会刻意调用它
+    事件处理函数
+    异步处理函数 setTimeout ,setInterval
+    其它临时性的函数
+2.为了绑定外层this的函数
+3.在不影响其他代码的情况下，保持代码的简洁
+
+对象字面量语法 
+1.成员速写
+    同名形参可以省略不写
+2.方法速写
+    const user = {
+        name: 'xxx',
+        age: xx,
+        say: function(){}
+    }
+    可以这么写
+    const user = {
+        name: 'xxx',
+        age: xx,
+        say(){} // 与上面等效 
+    }
+3.计算属性名
+    有的时候，初始化对象时，某些属性名可能来自于某个表达式的值，在es6中，可以使用中括号[]来表示该属性名是通过计算得到的
+
+Object的新增API
+    Objec.is
+    用于判断两个数据是否相等，基本上跟严格相等是一致的，除了一下两点
+    1.NaN和NaN相等
+    2.+0和-0不相等
+
+    Object.assign
+    用户对象混合, 返回第一个对象
+    Object.assign({}, obj1, obj2)
+
+    Object.getOwnPropertyNames的枚举顺序
+    先排数字，并按照升序排序，再排其它，按照书写顺序排序
+
+    Object.setPrototypeOf
+    该函数用于设置某个对象的隐式原型
+    比如：Object.setPrototypeOf(obj1, obj2)
+    相当于： obj1.__proto__ = obj2    
+
+
+
+
+浅拷贝
+深拷贝
+
 
 数组的结构赋值
     某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值
@@ -54,7 +176,3 @@ repeat
     
 
 Generator函数
-
-这两个循环的区别
-for in
-for of
