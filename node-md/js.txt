@@ -45,3 +45,16 @@ includes
 startsWith
 endWith
 repeat
+
+
+数组的结构赋值
+    某种数据结构具有 Iterator 接口，都可以采用数组形式的解构赋值
+    结构赋值允许指定默认值
+对象的结构赋值
+    
+
+Generator函数
+
+这两个循环的区别
+for in
+for of
