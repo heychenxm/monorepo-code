@@ -176,3 +176,11 @@ Object的新增API
     
 
 Generator函数
+
+运算符口占
+** 指数运算符
+    a ** b ** c ====> a ** (b ** c)
+?. 链判断运算符 判断异常返回undefined
+
+Proxy
+Rflect
