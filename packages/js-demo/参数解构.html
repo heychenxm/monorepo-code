@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参数解构</title>
+</head>
+<body>
+    <script>
+        function printUser({name, age, sex, address: {province, city}}) {
+            console.log(`[${name}][${age}][${sex}][${province}][${city}]`)
+        }
+
+        const user = {
+            name: "陈小名",
+            age: 28, 
+            sex: 'male',
+            address: {
+                province: "广东",
+                city: '深圳'
+            }
+        }
+        
+        printUser(user)
+    </script>
+</body>
+</html>

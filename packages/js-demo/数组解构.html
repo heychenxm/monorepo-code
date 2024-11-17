@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const arr = [1,2,'a', 'b', false]
+        // const {0: a, 1: b, 2: c} = arr
+        // console.log(a, b, c)
+        // const [n1, n2, n3, n4] = arr
+        // console.log(n1, n2, n3, n4)
+
+        // const arr = [1, 2,3,[4, 5]]
+        // const {
+        //     3: {
+        //         1: n1
+        //     }
+        // } = arr
+        // console.log(n1) // 5
+
+        // const nums = [1,2,3,4,5,6]
+        // const [a, b, ...arr] = nums
+        // console.log(a, b, arr)
+
+        const article = {
+            title: "文章标题",
+            content: '文章内容',
+            comments: [{
+                content: '评论1',
+                user: {
+                    id: 1,
+                    name: '用户名1'
+                }
+            },{
+                content: '评论2',
+                user: {
+                    id: 2,
+                    name: '用户名2'
+                }
+            }]
+        }
+        // 解构出第二条评论的用户名和评论内容
+        // userName, userContent
+        // let {comments: {1: {content: userContent, user: {name: userName}}}}  = article
+        let {
+            1: {
+                content: userContent,
+                user: {
+                    name: userName
+                }
+            }
+        } = article.comments
+        console.log(userName, userContent)
+    </script>
+</body>
+</html>

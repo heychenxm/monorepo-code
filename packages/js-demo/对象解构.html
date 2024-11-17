@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象结构</title>
+</head>
+<body>
+    <script>
+        const user = {
+            name: 'chexiaoming',
+            age: 28,
+            sex: 'male',
+            address: {
+                province: '广东',
+                city: '深圳'
+            },
+            test: undefined
+        }
+        // let {name, age, sex: gender = 123, address:{city}} = user
+        // let name, age, sex, address;
+        // ({name, age, sex, address, test = 123} = user)
+        // console.log(name, age, gender, city)
+
+        let {name, ...obj } = user
+        console.log(name, obj)
+    </script>
+</body>
+</html>

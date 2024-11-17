@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(name, age, sex) {
+                if(new.target === Animal){
+                    throw new TypeError("不能创建父类对象实例")
+                }
+                this.name = name;
+                this.age = age;
+                this.sex = sex
+            }
+            bark(){
+                console.log('这是Animal的叫法')
+            }
+            print(){
+                console.log(`${this.name}-${this.sex}-${this.age}`)
+            }
+        }
+
+        class Dog extends Animal {
+            constructor(...args) {
+                super(...args)
+                super.bark()
+            }
+            // bark(){
+            //     super.bark()
+            //     // console.log('这是Dog的叫法')
+            // }
+        }
+
+        const dog1 = new Dog('乖乖', 12, 'female')
+        console.log(dog1)
+        dog1.bark()
+    </script>
+</body>
+</html>

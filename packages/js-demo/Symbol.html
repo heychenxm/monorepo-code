@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+    <script>
+        // const syb1 = Symbol()
+        // const syb2 = Symbol('abc')
+        // console.log(syb1, syb2);
+        // console.log(typeof syb1, typeof syb2)
+
+        const syb1 = Symbol("这是一个对象属性名")
+        const obj = {
+            a: 1, 
+            b: 2, 
+            [syb1]: 'test'
+        }
+        console.log(obj)
+        for(props in obj){
+            console.log(props)
+        }
+        console.log(Object.getOwnPropertyNames(obj))
+        console.log(Object.getOwnPropertySymbols(obj))
+        console.log(obj[Object.getOwnPropertySymbols(obj)[0]])  // test
+    </script>
+</body>
+</html>

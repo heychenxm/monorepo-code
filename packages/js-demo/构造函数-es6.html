@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script> -->
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor(type, name, age, sex) {
+                this.type = type
+                this.name = name
+                this.age = age
+                this.sex = sex
+            }
+            // getAge(){
+            //     return `${this.age}岁`
+            // }
+            // setAge(age){
+            //     if(age<0){
+            //         age = 0
+            //     }else if(age > 1000){
+            //         age = 1000
+            //     }
+            //     this.age = age
+            // }
+
+            get age(){
+                return `${this._age}岁`
+            }
+            set age(age){
+                if(age<0){
+                    age = 0
+                }else if(age > 1000){
+                    age = 1000
+                }
+                this._age = age
+            }
+            print(){
+                console.log(this.type, this.name, this.age, this.sex)
+            }
+        }
+        const dog = new Animal('dog', 'guaiguai', 12000, 'female')
+
+        class Chess {
+            constructor(name) {
+                this.name = name
+            }
+            static width = 100
+            static height = 100
+        }
+        const chess1 = new Chess("将")
+        console.log(chess1)
+        console.log(Chess, Chess.width, Chess.height)
+
+        class Test {
+            @Obsolete
+            print(){
+                console.log("print方法提示")
+            }
+        }
+        function Obsolete(target, methodName, descriptor) {
+            console.log(target, methodName, descriptor)
+            // function Test
+            // print
+            // {value: function print(){}, ...}
+            const oldFunc = descriptor.value
+            descriptor.value = function(...args){
+                console.warn(`${methodName}已过时`)
+                oldFunc.apply(this, args)
+            }
+        }
+        const test = new Test()
+        test.print()
+    </script>
+</body>
+</html>
