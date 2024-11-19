@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    <script>
+        // var p1 = new Promise((resolve)=>{
+        //     let timer = setTimeout(() => {
+        //         console.log('p1执行完');
+        //         resolve('嘿嘿嘿')
+        //         clearTimeout(timer)
+        //     }, 5000);
+        // })  
+        // var p2 = new Promise((resolve)=>{
+        //     let timer = setTimeout(() => {
+        //         console.log('p2执行完');
+        //         resolve(p1)
+        //         clearTimeout(timer)
+        //     }, 1000);
+        // })      
+        // p2.then((res)=>{
+        //     console.log(res)
+        // })   
+
+        // const p = new Promise((resolve, reject)=>{
+        //     setTimeout(() => {
+        //         reject('test reject')
+        //     }, 1000);
+        // })
+        // p.then(null,(error)=>{
+        //     console.log('%c 🥚 error: ', 'font-size:12px;background-color: #33A5FF;color:#fff;', error);
+        // })
+        // p.catch(error=>{
+        //     console.log('%c 🍔 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);
+        // })
+
+        const p = new Promise((resolve, reject)=>{
+            setTimeout(() => {
+                resolve("success")
+            }, 1000);
+        })
+        p.then((res)=>{
+            console.log('%c 🍫 res: ', 'font-size:12px;background-color: #B03734;color:#fff;', res);
+            throw new SyntaxError('嘿嘿嘿')
+        })
+        .catch(err=>{
+            console.log('%c 🍶 err: ', 'font-size:12px;background-color: #93C0A4;color:#fff;', err);
+            y+2
+        }).catch((error)=>{
+            console.log('%c 🍖 error: ', 'font-size:12px;background-color: #FCA650;color:#fff;', error);    // 都会被捕获
+            z+2
+        }).catch((error)=>{
+            console.log('%c 🦐 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);    // 都会被捕获
+        }).finally(()=>{
+            console.log('this is finally');
+        })
+    </script>
+</body>
+</html>
