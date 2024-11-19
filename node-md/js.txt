@@ -249,13 +249,36 @@ class B extends A {
 符号具有以下特点
 1.没有字面量
 2.使用typeof得到的类型是symbol
-每次调用Symbol函数得到的符号永远不相等，无论符号名称是否相同
+每次调用Symbol函数得到的符号永远不相等，无论符号描述是否相同
 符号可以作为对象的属性名存在，这种属性称之为符号属性
     开发者可以通过精心的设计，让这些属性无法通过常规方式被外界访问
     符号属性是不能枚举的，因此在for-in循环中无法读取到符号属性，Object.keys方法也无法读取到符号属性
     Object.getOwnPropertyNames尽管可以得到所有无法枚举的属性，但是仍然无法读取到符号属性
     ES6新增Object.getOwnPropertySymbols方法，可以读取符号属性
 符号无法被隐式转换，因此不能被用于数学运算、字符串拼接或其他隐式转换的场景，但符号可以显示的转换为字符串，通过String构造函数进行转换即可,console.log之所以可以输出符号，是它在内部进行了显示转换
+符号可以转化为布尔类型 !symbol
+es2019提供 description 返回符号的描述参数
+sy.description
+Reflect.ownKeys()可以返回所有类型的键名，包括Symbol类型
+Symbol.for(描述) ----> 有就返回，没有就全局创建一个新的symbol
+Symbol.keyFor() 返回一个已登记的Symbol类型值的描述值
+    let s1 = Symbol.for('foo')
+    Symbol.keyFor(s1)   // foo
+内置Symbol值(11哥)
+    Symbol.hasInstance
+    Symbol.isConcatSpreadable
+        正常数组默认可以展开，类似数组的对象默认不展开
+    Symbol.species
+    Symbol.match
+    Symbol.replace
+    Symbol.search
+    Symbol.split
+    Symbol.toPrimitive
+    Symbol.toStringTag
+    Symbol.unscopables
+    Symbol.iterator
+
+
 
 
 

@@ -25,6 +25,26 @@
         console.log(Object.getOwnPropertyNames(obj))
         console.log(Object.getOwnPropertySymbols(obj))
         console.log(obj[Object.getOwnPropertySymbols(obj)[0]])  // test
+        console.log(syb1.description)   // 这是一个对象属性名
+        console.log(Reflect.ownKeys(obj));  //['a', 'b', Symbol(这是一个对象属性名)]
+        Reflect.ownKeys(obj).forEach(item=>{
+            console.log('%c 🥟 item: ', 'font-size:12px;background-color: #EA7E5C;color:#fff;', item);
+            if(typeof item === 'symbol'){
+                console.log(item)
+            }
+        })
+
+        let arr = ['3', '4']
+        let newArr = ['1','2'].concat(arr, '5')
+        console.log('%c 🌽 newArr: ', 'font-size:12px;background-color: #33A5FF;color:#fff;', newArr, arr[Symbol.isConcatSpreadable]);  // [1,2,3,4,5] undefined
+
+        let arr2 = ['c', 'd'];
+        arr2[Symbol.isConcatSpreadable] = false
+        let newArr2 = ['a', 'b'].concat(arr2, 'e');
+        console.log('%c 🍜 newArr2: ', 'font-size:12px;background-color: #FFDD4D;color:#fff;', newArr2);    //[a,b,[c,d],e]
+        
+
+
     </script>
 </body>
 </html>
