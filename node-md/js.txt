@@ -264,7 +264,7 @@ Symbol.for(描述) ----> 有就返回，没有就全局创建一个新的symbol
 Symbol.keyFor() 返回一个已登记的Symbol类型值的描述值
     let s1 = Symbol.for('foo')
     Symbol.keyFor(s1)   // foo
-内置Symbol值(11哥)
+内置Symbol值(11个)
     Symbol.hasInstance
     Symbol.isConcatSpreadable
         正常数组默认可以展开，类似数组的对象默认不展开
@@ -307,3 +307,6 @@ Generator函数
 
 Proxy
 Rflect
+
+
+Promise
