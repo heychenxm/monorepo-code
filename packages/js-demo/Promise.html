@@ -6,6 +6,7 @@
     <title>Promise</title>
 </head>
 <body>
+    <div id="root"></div>
     <script>
         // var p1 = new Promise((resolve)=>{
         //     let timer = setTimeout(() => {
@@ -37,26 +38,49 @@
         //     console.log('%c 🍔 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);
         // })
 
-        const p = new Promise((resolve, reject)=>{
-            setTimeout(() => {
-                resolve("success")
-            }, 1000);
-        })
-        p.then((res)=>{
-            console.log('%c 🍫 res: ', 'font-size:12px;background-color: #B03734;color:#fff;', res);
-            throw new SyntaxError('嘿嘿嘿')
-        })
-        .catch(err=>{
-            console.log('%c 🍶 err: ', 'font-size:12px;background-color: #93C0A4;color:#fff;', err);
-            y+2
-        }).catch((error)=>{
-            console.log('%c 🍖 error: ', 'font-size:12px;background-color: #FCA650;color:#fff;', error);    // 都会被捕获
-            z+2
-        }).catch((error)=>{
-            console.log('%c 🦐 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);    // 都会被捕获
-        }).finally(()=>{
-            console.log('this is finally');
-        })
+        // const p = new Promise((resolve, reject)=>{
+        //     setTimeout(() => {
+        //         resolve("success")
+        //     }, 1000);
+        // })
+        // p.then((res)=>{
+        //     console.log('%c 🍫 res: ', 'font-size:12px;background-color: #B03734;color:#fff;', res);
+        //     throw new SyntaxError('嘿嘿嘿')
+        // })
+        // .catch(err=>{
+        //     console.log('%c 🍶 err: ', 'font-size:12px;background-color: #93C0A4;color:#fff;', err);
+        //     y+2
+        // }).catch((error)=>{
+        //     console.log('%c 🍖 error: ', 'font-size:12px;background-color: #FCA650;color:#fff;', error);    // 都会被捕获
+        //     z+2
+        // }).catch((error)=>{
+        //     console.log('%c 🦐 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);    // 都会被捕获
+        // }).finally(()=>{
+        //     console.log('this is finally');
+        // })
+
+        // function createImage(imgUrl) {
+        //     return new Promise((resolve, reject)=>{
+        //         const img = document.createElement('img')
+        //         img.src = imgUrl
+        //         img.onload = () => {
+        //             resolve(img)
+        //         }
+        //         img.onerror = (err) => {
+        //             console.log(err);
+                    
+        //             reject(new Error)
+        //         }
+        //     })
+        // }
+        // const root = document.querySelector("#root")
+        // createImage('httdps://img1.baidu.com/it/u=3977757766,3399255499&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=667').then(imgDom=>{
+        //     root.appendChild(imgDom)
+        // }).catch(error=>{
+        //     console.log(error)
+        //     // root.appendChild(error)
+        //     root.innerHTML = error 
+        // })
     </script>
 </body>
 </html>
