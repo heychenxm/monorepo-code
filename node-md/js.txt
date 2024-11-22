@@ -310,3 +310,8 @@ Rflect
 
 
 Promise
+    resolve,reject
+    then/catch/finally
+    Promise.all
+    Promise.race
+    Promise.allSettle

@@ -37,26 +37,58 @@
         //     console.log('%c 🍔 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);
         // })
 
-        const p = new Promise((resolve, reject)=>{
-            setTimeout(() => {
-                resolve("success")
+        // const p = new Promise((resolve, reject)=>{
+        //     setTimeout(() => {
+        //         resolve("success")
+        //     }, 1000);
+        // })
+        // p.then((res)=>{
+        //     console.log('%c 🍫 res: ', 'font-size:12px;background-color: #B03734;color:#fff;', res);
+        //     throw new SyntaxError('嘿嘿嘿')
+        // })
+        // .catch(err=>{
+        //     console.log('%c 🍶 err: ', 'font-size:12px;background-color: #93C0A4;color:#fff;', err);
+        //     y+2
+        // }).catch((error)=>{
+        //     console.log('%c 🍖 error: ', 'font-size:12px;background-color: #FCA650;color:#fff;', error);    // 都会被捕获
+        //     z+2
+        // }).catch((error)=>{
+        //     console.log('%c 🦐 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);    // 都会被捕获
+        // }).finally(()=>{
+        //     console.log('this is finally');
+        // })
+
+        const p1 = new Promise(resolve=>{
+            let timer = setTimeout(() => {
+                resolve(1)
+                clearTimeout(timer)
             }, 1000);
         })
-        p.then((res)=>{
-            console.log('%c 🍫 res: ', 'font-size:12px;background-color: #B03734;color:#fff;', res);
-            throw new SyntaxError('嘿嘿嘿')
+        const p2 = new Promise((resolve, reject)=>{
+            let timer = setTimeout(() => {
+                resolve(1)
+                // reject(1)
+                clearTimeout(timer)
+            }, 2000);
         })
-        .catch(err=>{
-            console.log('%c 🍶 err: ', 'font-size:12px;background-color: #93C0A4;color:#fff;', err);
-            y+2
-        }).catch((error)=>{
-            console.log('%c 🍖 error: ', 'font-size:12px;background-color: #FCA650;color:#fff;', error);    // 都会被捕获
-            z+2
-        }).catch((error)=>{
-            console.log('%c 🦐 error: ', 'font-size:12px;background-color: #3F7CFF;color:#fff;', error);    // 都会被捕获
+        const p3 = new Promise((resolve, reject)=>{
+            let timer = setTimeout(() => {
+                resolve(1)
+                // reject(3)
+                clearTimeout(timer)
+            }, 3000);
+        })
+        Promise.all([p1, p2, p3]).then(res=>{
+            console.log('%c 🍝 res: ', 'font-size:12px;background-color: #FCA650;color:#fff;', res);
+        }).catch(error=>{
+            console.log('%c 🥦 error: ', 'font-size:12px;background-color: #EA7E5C;color:#fff;', error);
         }).finally(()=>{
-            console.log('this is finally');
+            console.log('%c 🍱 finally: ', 'font-size:12px;background-color: #33A5FF;color:#fff;');
         })
+        Promise.allSettled([p1,p2,p3]).then(res=>{
+            console.log('%c 🍕 res:allSettled ', 'font-size:12px;background-color: #B03734;color:#fff;', res);
+        })
+        console.log('this is all code finish')
     </script>
 </body>
 </html>
