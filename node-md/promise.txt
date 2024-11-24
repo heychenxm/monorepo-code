@@ -8,6 +8,7 @@ Promise A+规范
     3.resolve,reject
     4.可以针对任务结束后进行后续处理
 
+链式调用规则
 注意点
     1.then方法必定会返回一个新的Promise对象
         可以理解为后续处理也是一个任务
@@ -18,3 +19,24 @@ Promise A+规范
             后续处理执行有错，新任务的状态为失败，数据为异常对象
             后续执行后返回的是一个任务对象，新任务的状态和数据与该任务对象一致
 Promise API
+Promise静态方法
+    Promise.resolve()
+    Promise.reject()
+    Promise.all(任务数组)   全部成功的
+    Promise.race(任务数组)
+    Promise.any(任务数组)   任何一个成功的
+    Promise.allSettled(任务数组)
+
+
+消除回调
+ES7 推出两个关键字async await
+async 修饰函数，被它修饰的函数，函数执行一定返回promise对象
+await 
+
+macro 宏任务 micro 微任务
+
+setTimeout  macro task
+setInterval macro task
+Promise的then回调 micro task
+requestAnimationFrame的回调 marco task
+事件处理函数    macro task

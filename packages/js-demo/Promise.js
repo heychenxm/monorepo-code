@@ -72,16 +72,28 @@
 // })
 //3
 
-new Promise((resolve, reject)=>{
-    // throw new Error(1)  // 无法执行下去
-}).then(res=>{
-    console.log(res)
-    return new Error(2)
-}).catch(err=>{
-    console.log(err)
-    throw err
-    return 3
-}).then(res=>{
-    console.log(res)
-})
+// new Promise((resolve, reject)=>{
+//     // throw new Error(1)  // 无法执行下去
+// }).then(res=>{
+//     console.log(res)
+//     return new Error(2)
+// }).catch(err=>{
+//     console.log(err)
+//     throw err
+//     return 3
+// }).then(res=>{
+//     console.log(res)
+// })
 // 无法执行，直接抛出错误
+
+// const pro = Promise.all([1,2,3,4])
+// console.log(pro)
+
+// const pro = Promise.any([1,2,3])
+// setTimeout(() => {
+//     console.log(pro)
+// }, 1000);
+
+// const a = async function(){}
+// console.log(a()) // promise {undfined}
+// console.log(a)  // [AsyncFunction: a]
