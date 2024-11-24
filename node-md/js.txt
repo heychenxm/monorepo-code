@@ -334,3 +334,9 @@ fetch api的特点
 
 迭代模式
 一种设计模式，用于统一迭代过程，并规范了迭代器规格
+Promise
+    resolve,reject
+    then/catch/finally
+    Promise.all
+    Promise.race
+    Promise.allSettle
