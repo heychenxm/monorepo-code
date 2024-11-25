@@ -5,10 +5,10 @@ const REJECTED = 'rejected'
 /**
  * 运行一个微队列任务
  * 把传递的函数放到微队列中
- * @param {} callback 
+ * @param {Function} callback 
  */
 function runMicroTask(callback){
-    // 区分两个环境
+    // 区分两个环境 node环境和web环境ß
     // 判断node环境
     if(process && process.nextTick){
         process.nextTick(callback)
@@ -19,7 +19,6 @@ function runMicroTask(callback){
             childList: true
         })
         p.innerHTML = 'p is change'
-
     }else{
         setTimeout(callback, 0)
     }

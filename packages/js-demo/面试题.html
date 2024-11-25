@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id='start'>start</button>
+    <button id="pause">pause</button>
+    <script>
+        /**
+         * 依次顺序执行一系列任务
+         * 所有任务全部完成后可以得到每个任务的执行结果
+         * 需要返回两个方法，start用于启动任务，pause用于暂停任务
+         * 每个任务具有原子性，即不可中断，只能在两个任务之间中断
+         */
+        function processTask(...tasks) {
+            let isRunning = false
+            let result = []
+            let i = 0
+            return {
+                start(){
+                    return new Promise(async (resolve, reject)=>{
+                        if(isRunning){
+                            return;
+                        }
+                        isRunning = true
+                        while (i < tasks.length) {
+                            const task = tasks[i];
+                            const r = await task()
+                            result.psuh(r)
+                            i++
+                            if(!isRunning){
+                                return
+                            }
+                        }
+                        isRunning = false;
+                        resolve(result)
+                    })
+                },
+                pause(){
+                    isRunning = false
+                }
+            }
+        }
+
+        const startBtn = document.querySelector("#start")
+        const pauseBtn = document.querySelector("#pause")
+        console.log('%c 🥓 pauseBtn: ', 'font-size:12px;background-color: #42b983;color:#fff;', pauseBtn);
+
+        function t1(){
+            return new Promise((resolve)=>{
+            console.log('任务开始')
+                setTimeout(() => {
+                    console.log('任务结束')
+                    resolve()
+                }, 3000);
+            })
+        }
+
+        const processObj = processTask(t1, t1, t1)
+        processObj.start()
+
+    </script>    
+</body>
+</html>
