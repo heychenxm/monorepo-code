@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="avatar">
+    <button onclick="upload()">upload</button>
+    <script>
+        const dom = document.querySelector("#avatar")
+        const upload = () => {
+            console.log(dom.files)
+            if(!dom.files.length){
+                alert('请选择图片')
+            }
+            const formdata = new FormData()
+            formdata.append('avatar', dom.files[0])
+            console.log(formdata)
+        }
+    </script>
+</body>
+</html>

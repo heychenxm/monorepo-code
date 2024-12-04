@@ -320,6 +320,45 @@ fetch api的特点
 3.使用promise api，更利于异步代码的书写
 4.fetch api并非es6的内容，属于html5新增的web api并非es6的内容，属于html5新增的web
 5.需要掌握网络通信的知识
+必填参数： url
+选填： 
+    method: 请求方法，默认GET
+    headers: 对象，请求头信息
+    body: 请求体的内容，必须匹配请求头中Content-Type
+    mode: 字符串，请求模式
+    credentials： 如何携带凭据
+        omit：默认值，不携带cookie
+        same-origin：请求同源地址时携带cookie
+        include：请求任何地址都携带cookie
+    cache：配置缓存模式
+        default
+        no-store
+        no-cache
+        reload
+        force-cache
+        only-if-cache
+
+Response对象
+ok： boolean,
+也可以通过这个自己构建一个响应数据
+new Response(data, config)
+
+Headers对象
+在Request和Response对象内部，会将床底的请求头对象，转换为Headers
+Header对象中的方法
+has(key): 检查请求头中是否存在指定的key值
+get(key): 得到请求头中对应的key值
+set(key, value): 修改对应的键值对
+append(key,value ): 添加对应的键值对
+keys(): 得到所有的请求头的键值的数组
+values(): 得到所有的请求头中的值的数组
+entries(): 得到所有请求头中的键值的数组
+
+Request对象
+new Request(url,配置)
+尽量保证每次请求都是一个新的Request对象
+clone克隆一个全新的request对象，配置一致
+
 
 迭代器
 什么是迭代
